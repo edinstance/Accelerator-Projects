@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPathPattern": "/api/v1/books/addBook"
+  },
+  "response": {
+    "status": 200,
+    "headers": {}
+  }
+}

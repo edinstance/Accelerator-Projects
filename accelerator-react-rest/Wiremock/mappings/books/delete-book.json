@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "DELETE",
+    "urlPathPattern": "/api/v1/books/deleteBookById",
+    "queryParameters": {
+      "bookId": {
+        "matches": "\\d+"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {}
+  }
+}

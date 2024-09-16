@@ -1,0 +1,9 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/health"
+  },
+  "response": {
+    "status": 200
+  }
+}

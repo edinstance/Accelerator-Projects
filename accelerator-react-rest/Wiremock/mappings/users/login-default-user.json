@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/v1/users/login",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\"email\":\"test-default@6point6.co.uk\",\"password\":\"password\"}"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "default-user.json",
+    "headers": {
+      "Content-Type": "application/json",
+      "Content-Encoding": "identity"
+    }
+  }
+}

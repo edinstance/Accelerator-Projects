@@ -1,0 +1,12 @@
+{
+    "userId": 0,
+    "name": "Test User",
+    "email": "test-default@6point6.co.uk",
+    "role": "User",
+    "providerEntity": {
+        "providerId": 0,
+        "name": "Application",
+        "externalId": "username"
+    },
+    "password": "password"
+}

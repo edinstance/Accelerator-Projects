@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/v1/books/getAllBooks"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "books.json",
+    "headers": {
+      "Content-Type": "application/json",
+      "Content-Encoding": "identity"
+    }
+  }
+}

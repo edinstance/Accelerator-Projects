@@ -1,0 +1,15 @@
+{
+    "request": {
+      "method": "GET",
+      "urlPattern": "/api/v1/authors/getBooksByUserId\\?userId=([a-zA-Z0-9-]+)"
+    },
+    "response": {
+      "status": 200,
+      "bodyFileName": "books.json",
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Encoding": "identity"
+      }
+    }
+  }
+  

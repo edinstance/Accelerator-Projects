@@ -1,0 +1,52 @@
+name: Integration Tests CI
+on:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+  DATABASE_USER: ${{ secrets.DATABASE_USER }}
+  DATABASE_PASS: ${{ secrets.DATABASE_PASS }}
+
+jobs:
+  run-integration-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # This fetches the repository's code and places it in the working directory of the workflow runner.
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '22'
+          distribution: 'temurin'
+          architecture: x64
+        # This setups JDK with x64 Temurin Java 22
+
+      - name: Build Docker Image
+        run: cd Application && docker build -t accelerator-springboot --build-arg DATABASE_URL=$DATABASE_URL --build-arg DATABASE_NAME=$DATABASE_NAME --build-arg DATABASE_USER=$DATABASE_USER --build-arg DATABASE_PASS=$DATABASE_PASS .
+      # This builds the docker image
+
+      - name: Run Images
+        run: docker compose -f ./Application/docker-compose.yml up -d
+      # This runs the docker images
+
+      - name: Run tests and install dependencies
+        run: |
+          mvn -am compile
+          mvn test
+        # This runs the maven tests
+
+      - name: Save surefire results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Integration-Surefire-Test-Results
+          path: IntegrationTests/target/surefire-reports
+      # This saves the test results as an artifact
+
+      - name: Stop Images
+        run: docker compose -f ./Application/docker-compose.yml down
+      # This runs the docker images

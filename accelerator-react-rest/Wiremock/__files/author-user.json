@@ -1,0 +1,12 @@
+{
+    "userId": 1,
+    "name": "Lee Child",
+    "email": "test-author-user@6point6.co.uk",
+    "role": "Author",
+    "providerEntity": {
+        "providerId": 1,
+        "name": "Application",
+        "externalId": "username"
+    },
+    "password": "password"
+}

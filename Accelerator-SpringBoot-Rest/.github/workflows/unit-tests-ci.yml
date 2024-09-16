@@ -1,0 +1,34 @@
+name: Unit Test CI
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  run-maven-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # This fetches the repository's code and places it in the working directory of the workflow runner.
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '22'
+          distribution: 'temurin'
+          architecture: x64
+        # This setups JDK with x64 Temurin Java 22
+
+      - name: Run tests
+        run: mvn -f ./Application/pom.xml test
+        # This runs the maven tests
+
+      - name: Save surefire results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Unit-Surefire-Test-Results
+          path: ./Application/target/surefire-reports
+        # This saves the test results as an artifact
+      
+        

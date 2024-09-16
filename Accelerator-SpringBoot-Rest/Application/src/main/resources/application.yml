@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: Accelerator_SpringBoot_Rest
+
+  # Postgres config
+  datasource:
+    url: ${DATABASE_URL}
+    driver-class-name: org.postgresql.Driver
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASS}
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+# Actuator config
+management:
+  endpoint:
+    integration-graph:
+      enabled: false
+    info:
+      enabled: true
+  endpoints:
+    web:
+      base-path: "/details"
+    jmx:
+      exposure:
+        include: "health"
+        exclude: "prometheus"
+
+# Swagger config
+springdoc:
+  swagger-ui:
+    path: /accelerator-api-docs
+    try-it-out-enabled: true
+    tags-sorter: alpha

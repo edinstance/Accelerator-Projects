@@ -1,0 +1,9 @@
+[
+  {
+    "bookId": 1,
+    "title": "test title",
+    "author": { "authorId": 1, "name": "Lee Child" },
+    "isbn": "test isbn",
+    "released": true
+  }
+]

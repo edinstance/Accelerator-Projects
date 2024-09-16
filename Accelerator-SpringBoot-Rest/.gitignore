@@ -1,0 +1,10 @@
+.idea/
+
+.DS_STORE
+
+target/
+
+# ignore all logs
+*.log
+
+.env

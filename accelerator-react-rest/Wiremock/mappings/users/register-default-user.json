@@ -1,0 +1,9 @@
+{
+    "request": {
+      "method": "POST",
+      "urlPath": "/api/v1/users/register"
+    },
+    "response": {
+      "status": 200
+    }
+  }

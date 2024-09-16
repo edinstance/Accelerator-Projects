@@ -1,0 +1,35 @@
+name: lint-and-prettier
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # This fetches the repository's code and places it in the working directory of the workflow runner.
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      #  This step sets the worker up so that it can use node
+
+      - name: Install dependencies
+        run: |
+          npm install --silent \
+          eslint \
+          eslint-config-next \
+          eslint-config-prettier \
+          eslint-plugin-storybook \
+          prettier \
+          prettier-plugin-tailwindcss
+      # This step installs all of the prettier and lint dependencies needed.
+      - name: Run lint and prettier
+        run: npm run lint
+        env:
+          BACKEND_URL: ${{ secrets.TEST_BACKEND_URL }}
+      #  This step runs the npm lint command which should be next lint && prettier --write .
